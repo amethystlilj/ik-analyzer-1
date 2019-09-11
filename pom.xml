@@ -3,12 +3,31 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.wltea.ik-analyzer</groupId>
     <artifactId>ik-analyzer</artifactId>
-    <version>7.5.0</version>
+    <version>7.5.1</version>
     <name>IK Analyzer</name>
     <description>A dictionary and grammar-based Chinese segmenter.</description>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>User Project Snapshot</name>
+            <url>http://192.168.5.252:8081/nexus/content/repositories/snapshots</url>
+            <uniqueVersion>true</uniqueVersion>
+        </snapshotRepository>
+        <repository>
+            <id>releases</id>
+            <name>User Project Release</name>
+            <url>http://192.168.5.252:8081/nexus/content/repositories/releases</url>
+        </repository>
+    </distributionManagement>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <lucene.version>7.5.0</lucene.version>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <java.version>1.8</java.version>
+        <lucene.version>7.7.2</lucene.version>
     </properties>
 
     <dependencies>
@@ -34,4 +53,21 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <showWarnings>true</showWarnings>
+                    <optimize>true</optimize>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
